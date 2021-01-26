@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_library">
+
+    <fragment
+        android:id="@+id/fragment_library"
+        android:name="com.skullzbones.novelnation.ui.library.LibFragment"
+        android:label="Library"
+        tools:layout="@layout/fragment_library" />
+    <fragment
+        android:id="@+id/fragment_explore"
+        android:name="com.skullzbones.novelnation.ui.explore.ExploreFragment"
+        android:label="Explore"
+        tools:layout="@layout/fragment_explore" />
+    <fragment
+        android:id="@+id/fragment_featured"
+        android:name="com.skullzbones.novelnation.ui.featured.FeaturedFragment"
+        android:label="Featured"
+        tools:layout="@layout/fragment_featured" />
+    <fragment
+        android:id="@+id/fragment_profile"
+        android:name="com.skullzbones.novelnation.ui.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+
+</navigation>

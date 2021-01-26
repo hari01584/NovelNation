@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">NovelNation</string>
+    <string name="menu_library">Library</string>
+    <string name="menu_featured">Featured</string>
+    <string name="menu_explore">Explore</string>
+    <string name="menu_profile">Settings</string>
+
+    <string name="explore_text_exp">EXPLORE:</string>
+    <string name="explore_text_01">Trending:</string>
+    <string name="explore_text_02">View:</string>
+    <string name="explore_text_03">Rating:</string>
+    <string name="explore_text_04">Latest:</string>
+    <string name="explore_text_05">Alphabet:</string>
+    <string name="explore_text_06">New:</string>
+    <string name="book_detail_chapters">CHAPTERS</string>
+    <string name="book_detail_rating">"Rating: "</string>
+    <string name="book_detail_rank">"Rank: "</string>
+    <string name="book_detail_author">"Author: "</string>
+    <string name="book_detail_genre">"Genre: "</string>
+    <string name="book_detail_status">"Status: "</string>
+    <string name="book_detail_bio">"Synopsis: "</string>
+    <string name="book_detail_click_to_expand">Click On Summary To Expand/Collapse</string>
+    <string name="rating_suggestion_format" formatted="false">Rating: %1$s/5</string>
+    <string name="long_press_to_delete">Long press to delete the item!</string>
+    <string name="find_your_books_here">Find your books here!</string>
+    <string name="type_auto_to_getlist">This button not work! Write on searchbox to get list!!</string>
+    <string name="error_null_chapter">Invalid error while trying to fetch chapter id.</string>
+    <string name="next_chap_unav">Next chapter unavaliable!</string>
+    <string name="prev_chap_unav">Previous chapter is not avaliable!</string>
+    <string name="load_frag_failed">Loading fragment failed! Update The App!</string>
+
+    <string name="title_gallery_storage">Chapter Reading Text Size Multiplier</string>
+    <string name="default_gallery_storage">1</string>
+    <string name="title_upload_quality">Chapter Font</string>
+    <string name="summary_upload_video_quality">Font for reading novel chapters!</string>
+    <string name="pref_title_notifications">Notifications (Under Construction)</string>
+    <string name="summary_choose_ringtone">Choose notification sound</string>
+    <string name="pref_header_about">About</string>
+    <string name="summary_about">The app was made by *Agent_Orange#9852*, one of the fan made apps i built it to enable readers get free webnovels to read and without much of efforts! This all started when my boredom took out better of me and work on something which can simplify my process of reading website novels! (booknovel)! If you like the app, do donate in to support mah hardwork! :)</string>
+    <string name="app_version">1.2</string>
+    <string name="summary_support">Got any queries? We are happy to help!</string>
+    <string name="title_send_feedback">Send Feedback</string>
+    <string name="title_faq">FAQ</string>
+
+    <string name="summary_faq">View frequently asked questions</string>
+    <string name="url_faq">https://skullzbones.com/nn/privacy-policy/</string>
+
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="url_privacy">https://skullzbones.com/nn/privacy-policy/</string>
+
+    <string name="title_terms">Terms &amp; Conditions</string>
+    <string name="url_terms">https://skullzbones.com/nn/terms-of-service/</string>
+
+    <string name="title_version">Version</string>
+    <string name="choose_email_client">Choose email client</string>
+    <string name="title_new_notification_sound">New message notification</string>
+    <string name="title_vibrate">Vibrate</string>
+    <string name="summary_vibrate">Vibrate on new notification</string>
+    <string name="key_upload_over_wifi">key_upload_over_wifi</string>
+    <string name="key_gallery_name">key_gallery_name</string>
+    <string name="key_upload_quality">key_upload_quality</string>
+    <string name="notifications_new_message">notifications_new_message</string>
+    <string name="key_notifications_new_message_ringtone">key_notifications_new_message_ringtone</string>
+    <string name="key_vibrate">key_vibrate</string>
+    <string name="key_send_feedback">key_send_feedback</string>
+    <string name="first_explore">Awww, Looks like your library is still empty! Switch to Explore page and fill up your library!</string>
+    <string name="donate_me_text">If you like this work, Consider donating to show your support! It takes time even for me to build something!!</string>
+    <string name="donate_me_text_sub">Here are some of my handles! If you like my work, consider checking them out! :)</string>
+    <string name="youtube_beg">Also, I have a nice YT channel where i usually post my creation\'s and some fun content! So if you are eager to.. you can just check it out! (and maybe subscribe? xD)</string>
+    <string name="feedback">Also, for any feedback/review/sugestion you can mail me at *hari01584@gmail.com*, althought i aint avaliable most of times but i will try my best to reply back! :D</string>
+
+
+</resources>
