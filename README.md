@@ -6,6 +6,9 @@ NovelNation is the modern app to view and read your favourite novels for free!!
   - Boxnovel backend! So all boxnovel supported novels avaliable!
   - All your favourite genre/things at your disposal!
 
+# SCREENSHOTS:
+![Explore Page](https://lh3.googleusercontent.com/vsGj6YxSKwliqCG4b4yJp7kH28ybGKXD_37I_6BSvFJNmzlt_IUNhVL9O2z7atiy00o)
+
 # New Features!
 
   - Added library to track all the novels read!
