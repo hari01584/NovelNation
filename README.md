@@ -36,7 +36,7 @@ And of course NovelNation itself is open source with a [public repository](https
  on GitHub.
 
 ### Installation
-
+Latest apk link - https://github.com/hari01584/NovelNation/releases/download/v1/app-release.apk
 Download the apk(from releases) and install the application!
 
 Install the apk (you might have to enable *unknown sources* settings for that!)
