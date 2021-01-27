@@ -10,7 +10,10 @@ NovelNation is the modern app to view and read your favourite novels for free!!
 ![Explore Page](https://lh3.googleusercontent.com/vsGj6YxSKwliqCG4b4yJp7kH28ybGKXD_37I_6BSvFJNmzlt_IUNhVL9O2z7atiy00o)
 ![Novel Details Page](https://lh3.googleusercontent.com/XK7XbS5ek_EEwBQtBigtP0QtjMeKwcS05WhmfwjWDlHDu4Qm2DW_GUV_WRdfKxY3pgw)
 ![Chapter Reading](https://lh3.googleusercontent.com/P9EsbIh9YJXtWliPlL1C_sYxvfidjS0eG6MfOjZN_tM9Bhjq5ORYfFWaGMNwm5o2m-g)
-<img src="https://lh3.googleusercontent.com/vsGj6YxSKwliqCG4b4yJp7kH28ybGKXD_37I_6BSvFJNmzlt_IUNhVL9O2z7atiy00o" width="100" height="100">
+
+<img src="https://lh3.googleusercontent.com/vsGj6YxSKwliqCG4b4yJp7kH28ybGKXD_37I_6BSvFJNmzlt_IUNhVL9O2z7atiy00o" width="300" height="300">
+<img src="https://lh3.googleusercontent.com/XK7XbS5ek_EEwBQtBigtP0QtjMeKwcS05WhmfwjWDlHDu4Qm2DW_GUV_WRdfKxY3pgw" width="300" height="300">
+<img src="https://lh3.googleusercontent.com/P9EsbIh9YJXtWliPlL1C_sYxvfidjS0eG6MfOjZN_tM9Bhjq5ORYfFWaGMNwm5o2m" width="300" height="300">
 
 # New Features!
 
