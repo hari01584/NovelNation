@@ -11,6 +11,14 @@ NovelNation is the modern app to view and read your favourite novels for free!!
 ![Novel Details Page](https://lh3.googleusercontent.com/XK7XbS5ek_EEwBQtBigtP0QtjMeKwcS05WhmfwjWDlHDu4Qm2DW_GUV_WRdfKxY3pgw)
 ![Chapter Reading](https://lh3.googleusercontent.com/P9EsbIh9YJXtWliPlL1C_sYxvfidjS0eG6MfOjZN_tM9Bhjq5ORYfFWaGMNwm5o2m-g)
 
+
+### Installation
+Latest apk link - https://github.com/hari01584/NovelNation/releases/download/v1/app-release.apk
+Download the apk(from releases) and install the application!
+
+Install the apk (you might have to enable *unknown sources* settings for that!)
+
+
 # New Features!
 
   - Added library to track all the novels read!
@@ -40,10 +48,5 @@ NovelNation uses a number of open source projects to work properly:
 And of course NovelNation itself is open source with a [public repository](https://github.com/hari01584/NovelNation)
  on GitHub.
 
-### Installation
-Latest apk link - https://github.com/hari01584/NovelNation/releases/download/v1/app-release.apk
-Download the apk(from releases) and install the application!
-
-Install the apk (you might have to enable *unknown sources* settings for that!)
 
 **Free Software, Hell Yeah!**
