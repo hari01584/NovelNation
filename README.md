@@ -13,6 +13,8 @@ NovelNation is the modern app to view and read your favourite novels for free!!
 
 
 ### Installation
+Playstore link - https://play.google.com/store/apps/details?id=com.skullzbones.novelnation
+OR 
 Latest apk link - https://github.com/hari01584/NovelNation/releases/download/v1/app-release.apk
 Download the apk(from releases) and install the application!
 
