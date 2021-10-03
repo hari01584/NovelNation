@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.skullzbones.novelnation.MainActivity;
@@ -11,6 +12,7 @@ import com.skullzbones.novelnation.POJO.Book;
 import com.skullzbones.novelnation.POJO.Chapter;
 import com.skullzbones.novelnation.Room.BookDao;
 
+import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -22,6 +24,7 @@ import java.util.concurrent.ExecutionException;
 
 public class API_CALL_LINKS {
     private static final int TIMEOUT_NETWORK_REQUESTS = 5000;
+    private static final String TAG = "c/API_CALL_LINKS";
     public static String base = "https://boxnovel.com/";
     public static String novel = "https://boxnovel.com/novel/";
 
@@ -42,11 +45,14 @@ public class API_CALL_LINKS {
     public static int BOOK_TYPE = 27;
     public static int BOOK_SUMMARY = 28;
 
-    private static final String SCRAPE_ID_FROM_URL = "body > div.wrap > div > div > div.profile-manga > div > div > div > div.tab-summary > div.summary_content_wrap > div > div.post-content > div.post-rating > input";
-    private static final String SCRAPE_CSS_BOOK_DETAILS = "body > div.wrap > div > div > div.profile-manga > div > div > div > div.tab-summary > div.summary_content_wrap > div > div.post-content > div.post-content_item > div.summary-content";
-    private static final String SCRAPE_CSS_BOOK_SUMMARY = "body > div.wrap > div > div > div.c-page-content.style-1 > div > div > div > div.main-col.col-md-8.col-sm-8 > div.main-col-inner > div.c-page > div > div.description-summary > div.summary__content.show-more";
-    private static final String SCRAPE_CSS_BOOK_CHAPTER = "body > div.wrap > div > div > div.c-page-content.style-1 > div > div > div > div.main-col.col-md-8.col-sm-8 > div.main-col-inner > div.c-page > div > div.page-content-listing.single-page > div > ul > li";
-    private static final String SCRAPE_SEARCH_QUERY_RESULTS = "body > div.wrap > div > div > div.c-page-content > div > div > div > div > div.main-col-inner > div > div.tab-content-wrap > div > div > div";
+    private static final String SCRAPE_TAGBOX_FROM_URL = "body > div.wrap > div > div > div > div.profile-manga.summary-layout-1 > div > div > div > div.tab-summary";
+    private static final String SCRAPE_ID_FROM_URL = "body > div.wrap > div > div > div > div.profile-manga.summary-layout-1 > div > div > div > div.tab-summary > div.summary_content_wrap > div > div.post-content > div.post-rating > input";
+    private static final String SCRAPE_CSS_BOOK_INNER_DETAILS = "body > div.wrap > div > div > div > div.profile-manga.summary-layout-1 > div > div > div > div.tab-summary > div.summary_content_wrap > div > div.post-content > div > div.summary-content";
+    private static final String SCRAPE_CSS_BOOK_DETAILS = "body > div.wrap > div > div > div > div.profile-manga.summary-layout-1 > div > div > div > div.tab-summary > div.summary_content_wrap > div > div.post-content";
+    private static final String SCRAPE_CSS_BOOK_SUMMARY = "body > div.wrap > div > div > div > div.c-page-content.style-1 > div > div > div > div.main-col.col-md-8.col-sm-8 > div.main-col-inner > div > div > div.description-summary";
+    private static final String SCRAPE_CSS_BOOK_CHAPTER = "#manga-chapters-holder > div.page-content-listing.single-page > div > ul > li";
+    private static final String SCRAPE_CSS_BOOK_CHAPTER_NEW_PROTO = "div.page-content-listing.single-page > div > ul > li";
+    private static final String SCRAPE_SEARCH_QUERY_RESULTS = "body > div.wrap > div > div > div.c-page-content > div > div > div > div > div.main-col-inner > div > div.tab-content-wrap > div > div";
     private static final String SCRAPE_CSS_BOOK_CHAPTER_READ = "body > div.wrap > div > div > div > div > div > div > div > div > div.c-blog-post > div.entry-content > div > div > div.reading-content";
     private static final String SCRAPE_CSS_BOOK_NAVIGATION = "body > div.wrap > div > div > div > div > div > div > div > div > div.c-select-bottom > div > div.select-pagination > div";
 
@@ -76,13 +82,14 @@ public class API_CALL_LINKS {
                                 Element recur = pageDetails.getElementsByClass("item-thumb  c-image-hover").first();
 
                                 String nuid = recur.attr("id");
-                                int inte = Integer.valueOf(nuid.split("-")[2]);
+                                int inte = Integer.parseInt(nuid.split("-")[2]);
 
                                 Element imageHead = recur.getElementsByTag("a").first().select("img").first();
                                 String link = imageHead.absUrl("src");
 
                                 Element summary = pageDetails.getElementsByClass("item-summary").first();
-                                Element front = summary.select("div.post-title.font-title > h5 > a").first();
+                                Element front = summary.select("div.post-title.font-title > h3 > a").first();
+
                                 String urlLink = front.attr("href");
                                 String title = front.html();
 
@@ -136,32 +143,54 @@ public class API_CALL_LINKS {
                         }
                         try {
                             Document doc = Jsoup.parse(result);
-                            Elements sumdata = doc.select(API_CALL_LINKS.SCRAPE_CSS_BOOK_DETAILS);
+                            Elements sumdata = doc.select(API_CALL_LINKS.SCRAPE_CSS_BOOK_INNER_DETAILS);
                             data.put(BOOK_RATE, sumdata.get(0).text());
                             data.put(BOOK_RANK, sumdata.get(1).text());
                             data.put(BOOK_AUTHOR, sumdata.get(3).text());
-                            data.put(BOOK_GENRE, sumdata.get(5).text());
-                            data.put(BOOK_TYPE, sumdata.get(6).text());
+                            data.put(BOOK_GENRE, sumdata.get(4).text());
+                            data.put(BOOK_TYPE, sumdata.get(5).text());
                             Element summary = doc.select(API_CALL_LINKS.SCRAPE_CSS_BOOK_SUMMARY).first();
                             data.put(BOOK_SUMMARY, summary.text());
-                            Elements chaps = doc.select(API_CALL_LINKS.SCRAPE_CSS_BOOK_CHAPTER);
-                            for (Element chap : chaps) {
-                                String link = chap.getElementsByTag("a").first().attr("href");
-                                String text = chap.getElementsByTag("a").text();
-                                String rd = chap.getElementsByClass("chapter-release-date").text();
-                                if(link.equals(latestStrin)) break;
-                                Chapter c = new Chapter(book.uid,link, text, rd,null,false);
-                                chapters.add(c);
-                                MainActivity.appDatabase.chapterDao().insert(c);
-                            }
 
+                            getAndParseChaptersAJAX(context, book, chapters, latestStrin, data, callBacks);
                         } catch (Exception ex) {
                             ex.printStackTrace();
+                            callBacks.fetchBookData(data, chapters);
                         }
-                        callBacks.fetchBookData(data, chapters);
                     }
 
                 });
+    }
+
+    private static void getAndParseChaptersAJAX(Context context, Book book, ArrayList<Chapter> chapters, String latestStrin, Hashtable<Integer, String> data, CallBackBookItem callBackBookItem) {
+        Ion.with(context)
+            .load("POST",book.Url + "ajax/chapters/")
+            .asString()
+            .setCallback(new FutureCallback<String>() {
+                @Override
+                public void onCompleted(Exception e, String result) {
+                    try{
+                        String response = "<html><body>" + result + "</body></html>";
+                        Document doc = Jsoup.parse(response);
+                        Elements chaps = doc.select(API_CALL_LINKS.SCRAPE_CSS_BOOK_CHAPTER_NEW_PROTO);
+                        for (Element chap : chaps) {
+                            String link = chap.getElementsByTag("a").first().attr("href");
+                            String text = chap.getElementsByTag("a").text();
+                            String rd = chap.getElementsByClass("chapter-release-date").text();
+                            if (link.equals(latestStrin))
+                                break;
+                            Chapter c = new Chapter(book.uid, link, text, rd, null, false);
+                            chapters.add(c);
+                            MainActivity.appDatabase.chapterDao().insert(c);
+                        }
+                    } catch (Exception es){
+                        es.printStackTrace();
+                    }
+                    Log.d(TAG, "I waz here");
+                    Log.d(TAG, chapters.toString());
+                    callBackBookItem.fetchBookData(data, chapters);
+                }
+            });
     }
 
     public static void parseChapterData(Context context, String url, CallBackChapterDataParse callBackChapterDataParse) {
@@ -241,11 +270,13 @@ public class API_CALL_LINKS {
                             Document doc = Jsoup.parse(result);
                             Elements pageData = doc.select(API_CALL_LINKS.SCRAPE_SEARCH_QUERY_RESULTS);
                             for (Element chap : pageData) {
-                                Element imag = chap.select("div.col-sm-2.col-md-2 > div > a").first();
+                                Element imag = chap.select("div.col-4.col-12.col-md-2 > div > a").first();
+
                                 String url = imag.attr("href");
                                 String bookTitle = imag.attr("title");
                                 String imageLink = imag.getElementsByTag("img").first().absUrl("src");
-                                Element rat = chap.select("div.col-sm-10.col-md-10 > div.tab-meta > div.meta-item.rating > div > span").first();
+
+                                Element rat = chap.select("div.col-8.col-12.col-md-10 > div.tab-meta > div.meta-item.rating").first();
                                 String rating = rat.text();
                                 //int id = getUniqIDfromLink(context, url);
                                 books.add(new Book(null,bookTitle,"0/0",url,imageLink,rating,null));

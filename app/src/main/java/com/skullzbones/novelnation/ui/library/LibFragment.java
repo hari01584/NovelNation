@@ -1,5 +1,6 @@
 package com.skullzbones.novelnation.ui.library;
 
+import android.util.Log;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
@@ -30,6 +31,7 @@ import static com.skullzbones.novelnation.API.Utility.startBookActivity;
 
 public class LibFragment extends Fragment {
 
+    private static final String TAG = "l/LibFragment";
     private  LibViewModel mViewModel;
     private RecyclerView mRecyclerView;
     public static LibFragment newInstance() {
@@ -70,6 +72,12 @@ public class LibFragment extends Fragment {
             @Override
             public void run() {
                 mViewModel.booksLibrary = new ArrayList<>(MainActivity.appDatabase.bookDao().getBookLibrary());
+                for(int i=0; i<mViewModel.booksLibrary.size(); i++){
+                    int bookId = mViewModel.booksLibrary.get(i).uid;
+                    int read = MainActivity.appDatabase.chapterDao().countChaptersRead(bookId);
+                    int total = MainActivity.appDatabase.chapterDao().countChaptersTotal(bookId);
+                    mViewModel.booksLibrary.get(i).bookProgress = String.format("%d/%d", read, total);
+                }
                 setupDataForAdapterS();
             }
         }.run();
